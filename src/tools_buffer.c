@@ -11,6 +11,7 @@
 #ifdef TOOLS_BUFFER_ENABLED
 
 #include "tools_assert.h"
+#include "tools_print.h"
 #include "tools_misc.h"
 
 #define BUF_ASSERT(b) \

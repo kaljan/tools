@@ -17,7 +17,7 @@
 #include "debug/dbg_buffer.h"
 #endif /* TOOLS_DEBUG_ENABLED */
 
-typedef struct _tools_buffer_t {
+typedef struct tools_buffer {
 	/** Debug object field*/
 	DEBUG_OBJECT
 
@@ -31,7 +31,7 @@ typedef struct _tools_buffer_t {
 	size_t bytes;
 
 	/** Next buffer item, for double buffer mode */
-	struct _tools_buffer_t * next;
+	struct tools_buffer * next;
 } tools_buffer_t;
 
 #ifdef __cplusplus

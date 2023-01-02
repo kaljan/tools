@@ -11,6 +11,7 @@
 #define TOOLS_DEBUG_H
 
 #include "tools_opt.h"
+
 #ifdef TOOLS_DEBUG_ENABLED
 
 /* Debug level definition */
