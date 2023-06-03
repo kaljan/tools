@@ -1,8 +1,8 @@
 /**
- * @file 	tools_debug.h
- * @author	Mikalai Naurotski (kaljan.nothern@gmail.com)
- * @version	1.0.0
- * @date	Apr 14, 2019
+ * @file    tools_debug.h
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
+ * @version 1.0.0
+ * @date    14.04.2019
  *
  * @brief
  */

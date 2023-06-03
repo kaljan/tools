@@ -1,8 +1,8 @@
 /**
- * @file 	tools_time.c
- * @author	Mikalai Naurotski (kaljan.nothern@gmail.com)
- * @version	1.0.0
- * @date	Mar 11, 2021
+ * @file    tools_time_linux.c
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
+ * @version 1.0.0
+ * @date    11.03.2021
  *
  * @brief
  */
@@ -26,8 +26,8 @@ static struct timeval p_current_time;
  *
  */
 void tools_time_init(void) {
-	tools_time_current(&p_current_time);
-	p_start_time = tools_time_to_u64(p_current_time);
+    tools_time_current(&p_current_time);
+    p_start_time = tools_time_to_u64(p_current_time);
 }
 
 /**
@@ -36,14 +36,14 @@ void tools_time_init(void) {
  * @return uint64_t
  */
 uint64_t tools_time_now_us(void) {
-	tools_time_current(&p_current_time);
-	uint64_t ret = tools_time_to_u64(p_current_time);
-	if (ret && ret > p_start_time) {
-		return ret - p_start_time;
-	} else {
-		ret = 0;
-	}
-	return ret;
+    tools_time_current(&p_current_time);
+    uint64_t ret = tools_time_to_u64(p_current_time);
+    if (ret && ret > p_start_time) {
+        return ret - p_start_time;
+    } else {
+        ret = 0;
+    }
+    return ret;
 }
 
 #else

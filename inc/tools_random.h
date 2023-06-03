@@ -1,8 +1,8 @@
 /**
- * @file 	tools_random.c
- * @author	Mikalai Naurotski (kaljan.nothern@gmail.com)
- * @version	1.0.0
- * @date	Oct 17, 2020
+ * @file    tools_random.h
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
+ * @version 1.0.0
+ * @date    17.10.2020
  *
  * @brief
  */

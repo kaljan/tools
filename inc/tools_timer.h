@@ -1,8 +1,8 @@
 /**
  * @file    tools_timer.h
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Sep 05, 2020
+ * @date    05.09.2020
  *
  * @brief
  */
@@ -21,14 +21,14 @@
 #endif /* TOOLS_DEBUG_ENABLED */
 
 typedef struct _tools_timer_t {
-	/* Debug object field*/
-	DEBUG_OBJECT
+    /* Debug object field*/
+    DEBUG_OBJECT
 
-	bool continous;
-	uint64_t timeout;
-	uint64_t start_time;
-	callback_t callback;
-	context_t parent;
+    bool continous;
+    uint64_t timeout;
+    uint64_t start_time;
+    callback_t callback;
+    context_t parent;
 } tools_timer_t;
 
 #ifdef __cplusplus

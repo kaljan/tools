@@ -1,8 +1,8 @@
 /**
  * @file    tools_time.c
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Nov 7, 2020
+ * @date    7.11.2020
  *
  * @brief
  */
@@ -63,4 +63,14 @@ const char* tools_time_currstr(char* str, size_t len, const char* fmt) {
     return str;
 }
 
+#ifdef __linux__
+
+void tools_time_to_tm(struct tm* dst, const time_t* src) {
+    struct tm* temp = localtime(src);
+    if (NULL != temp) {
+        memcpy(dst, temp, sizeof(struct tm));
+    }
+}
+
+#endif /* __linux__ */
 #endif /* TOOLS_TIME_ENABLED */

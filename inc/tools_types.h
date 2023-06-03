@@ -1,8 +1,8 @@
 /**
  * @file    tools_types.h
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Dec 26, 2020
+ * @date    26.12.2020
  *
  * @brief
  */

@@ -1,8 +1,8 @@
 /**
- * @file 	periph_sys_tim.c
- * @author	Mikalai Naurotski (kaljan.nothern@gmail.com)
- * @version	1.0.0
- * @date	Apr 8, 2020
+ * @file    tools_time_stm32f7xx.c
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
+ * @version 1.0.0
+ * @date    08.04.2020
  *
  * @brief
  */
@@ -16,8 +16,8 @@
 #include "stm32f7xx_ll_tim.h"
 #include "stm32f7xx_ll_rcc.h"
 
-#define SYS_TIMER		TIM2
-#define SYS_TIMER_IRQ	TIM2_IRQn
+#define SYS_TIMER        TIM2
+#define SYS_TIMER_IRQ    TIM2_IRQn
 #define SYS_TIMER_RCCEN LL_APB1_GRP1_PERIPH_TIM2
 
 static uint64_t _time = 0;
@@ -70,7 +70,7 @@ void TIM2_IRQHandler(void) {
 }
 
 int tools_time_current(struct timeval* t) {
-	return 0;
+    return 0;
 }
 
 #else

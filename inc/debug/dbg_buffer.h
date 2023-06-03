@@ -1,8 +1,8 @@
 /**
  * @file    dbg_buffer.h
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Nov 7, 2020
+ * @date    07.11.2020
  *
  * @brief
  */

@@ -1,8 +1,8 @@
 /**
- * @file 	tools_time.h
- * @author	Mikalai Naurotski (kaljan.nothern@gmail.com)
- * @version	1.0.0
- * @date	Mar 11, 2021
+ * @file    tools_time.h
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
+ * @version 1.0.0
+ * @date    11.03.2021
  *
  * @brief
  *
@@ -12,6 +12,10 @@
 #define TOOLS_TIME_H
 
 #include "tools_opt.h"
+
+#ifdef __linux__
+#include <time.h>
+#endif /* __linux__ */
 
 #ifdef TOOLS_TIME_ENABLED
 
@@ -25,9 +29,10 @@ extern "C" {
 
 #ifdef __linux__
 #define tools_time_current(t) gettimeofday(t, NULL)
+void tools_time_to_tm(struct tm* dst, const time_t* src);
 #else
 int tools_time_current(struct timeval* t);
-#endif
+#endif /* __linux__ */
 
 void tools_time_init(void);
 uint64_t tools_time_now_us(void);

@@ -1,8 +1,8 @@
 /**
  * @file    dbg_string.h
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Nov 6, 2020
+ * @date    06.11.2020
  *
  * @brief
  */

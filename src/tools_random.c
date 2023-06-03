@@ -1,8 +1,8 @@
 /**
- * @file 	tools_random.c
- * @author	Mikalai Naurotski (kaljan.nothern@gmail.com)
- * @version	1.0.0
- * @date	Oct 17, 2020
+ * @file    tools_random.c
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
+ * @version 1.0.0
+ * @date    17.10.2020
  *
  * @brief
  */
@@ -19,17 +19,17 @@
 #include <math.h>
 
 // #include <unistd.h>
-// #include <sys/time.h>
+#include <sys/time.h>
 
 /**
  * Initialize random
  */
 void tools_random_init(void) {
-	struct timeval t;
-	if (tools_time_current(&t) != 0) {
-		return;
-	}
-	srand((uint32_t)(t.tv_sec ^ t.tv_usec));
+    struct timeval t;
+    if (tools_time_current(&t) != 0) {
+        return;
+    }
+    srand((uint32_t)(t.tv_sec ^ t.tv_usec));
 }
 
 
@@ -41,12 +41,12 @@ void tools_random_init(void) {
  * @return int
  */
 int tools_random_int(int start, int end) {
-	if (start < end) {
-		return (rand() % (abs(end - start) + 1)) + start;
-	} else if (start > end) {
-		return (rand() % (abs(end - start) + 1)) + end;
-	}
-	return start;
+    if (start < end) {
+        return (rand() % (abs(end - start) + 1)) + start;
+    } else if (start > end) {
+        return (rand() % (abs(end - start) + 1)) + end;
+    }
+    return start;
 }
 
 /**
@@ -56,16 +56,16 @@ int tools_random_int(int start, int end) {
  * @return int
  */
 static int p_ischar(int c) {
-	if (c >= '0' && c <= '9') {
-		return c;
-	} else if (c >= 'A' && c <= 'Z') {
-		return c;
-	} else if (c >= 'a' && c <= 'z') {
-		return c;
-	} else if (c == '_') {
-		return c;
-	}
-	return 0;
+    if (c >= '0' && c <= '9') {
+        return c;
+    } else if (c >= 'A' && c <= 'Z') {
+        return c;
+    } else if (c >= 'a' && c <= 'z') {
+        return c;
+    } else if (c == '_') {
+        return c;
+    }
+    return 0;
 }
 
 /**
@@ -75,26 +75,26 @@ static int p_ischar(int c) {
  * @param size
  */
 void tools_random_str(char * ptr, size_t size) {
-	if (ptr && size > 2) {
-		uint32_t r;
-		int c;
-		r = (uint32_t)rand();
-		while (size > 0) {
-			if (r < 20) {
-				r = (uint32_t)rand();
-			}
+    if (ptr && size > 2) {
+        uint32_t r;
+        int c;
+        r = (uint32_t)rand();
+        while (size > 0) {
+            if (r < 20) {
+                r = (uint32_t)rand();
+            }
 
-			c = p_ischar((int)(r & 0x7F));
-			r >>= 7;
+            c = p_ischar((int)(r & 0x7F));
+            r >>= 7;
 
-			if (c != 0) {
-				*ptr = (char)c;
-				size--;
-				ptr++;
-			}
-		}
-		*ptr = 0;
-	}
+            if (c != 0) {
+                *ptr = (char)c;
+                size--;
+                ptr++;
+            }
+        }
+        *ptr = 0;
+    }
 }
 
 /**
@@ -135,15 +135,15 @@ void tools_random_string(char * text, size_t size) {
  * @param size
  */
 void tools_random_data(uint8_t * data, size_t size) {
-	if (data && size > 0) {
-		while (size > 0) {
-			int s = (size < 4) ? size : 4;
-			int r = rand();
-			memmove(data, &r, s);
-			data += s;
-			size -= s;
-		}
-	}
+    if (data && size > 0) {
+        while (size > 0) {
+            int s = (size < 4) ? size : 4;
+            int r = rand();
+            memmove(data, &r, s);
+            data += s;
+            size -= s;
+        }
+    }
 }
 
 #ifdef TOOLS_ALLOC_ENABLED
@@ -156,8 +156,8 @@ void tools_random_data(uint8_t * data, size_t size) {
  */
 char * tools_random_create_string(size_t size) {
     char * str = malloc(size + 1);
-	tools_random_string(str, size);
-	return str;
+    tools_random_string(str, size);
+    return str;
 }
 
 /**
@@ -167,9 +167,9 @@ char * tools_random_create_string(size_t size) {
  * @return uint8_t*
  */
 uint8_t * tools_random_create_data(size_t size) {
-	uint8_t * data = malloc(size);
-	tools_random_data(data, size);
-	return data;
+    uint8_t * data = malloc(size);
+    tools_random_data(data, size);
+    return data;
 }
 
 #endif /* TOOLS_ALLOC_ENABLED */

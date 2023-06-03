@@ -1,8 +1,8 @@
 /**
  * @file    tools_hexdump.h
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Dec 27, 2020
+ * @date    27.12.2020
  *
  * @brief
  */

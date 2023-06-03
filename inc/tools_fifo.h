@@ -1,10 +1,10 @@
 /**
  * @file    tools_fifo.h
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Oct 17, 2020
+ * @date    17.11.2020
  *
- * @brief FIFO (First In First Out)
+ * @brief   FIFO (First In First Out)
  */
 #ifndef TOOLS_FIFO_H
 #define TOOLS_FIFO_H

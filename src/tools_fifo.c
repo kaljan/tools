@@ -1,8 +1,8 @@
 /**
  * @file    tools_fifo.c
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Oct 17, 2020
+ * @date    17.10.2020
  *
  * @brief
  */
@@ -50,4 +50,7 @@ int tools_fifo_get(tools_fifo_t* context, uint8_t* const c) {
     }
     return -1;
 }
+
+
+
 #endif /* TOOLS_FIFO_ENABLED */

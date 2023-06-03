@@ -1,8 +1,8 @@
 /**
- * @file 	tools_debug.c
- * @author	Mikalai Naurotski (kaljan.nothern@gmail.com)
- * @version	1.0.0
- * @date	Apr 14, 2019
+ * @file    tools_debug.c
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
+ * @version 1.0.0
+ * @date    14.04.2019
  *
  * @brief
  */
@@ -19,42 +19,58 @@
 #ifdef TOOLS_COLOR_ENABLED
 
 /* Log level color */
-#define LOG_V_COLOR			F_BLUE
-#define LOG_I_COLOR			F_GREEN
-#define LOG_T_COLOR			F_MAGENTA
-#define LOG_D_COLOR			F_CYAN
-#define LOG_W_COLOR			F_YELLOW
-#define LOG_E_COLOR			F_RED
+#define LOG_V_COLOR            C_DEFAULT
+#define LOG_D_COLOR            C_DEFAULT
+#define LOG_I_COLOR            C_BOLD
+#define LOG_W_COLOR            C_BOLD
+#define LOG_E_COLOR            C_BOLD
+
+#define LABEL_V_COLOR       "\e[0m"
+#define LABEL_D_COLOR       "\e[34;1m"
+#define LABEL_I_COLOR       "\e[42;30;1m"
+#define LABEL_W_COLOR       "\e[43;30;1m"
+#define LABEL_E_COLOR       "\e[41;1m"
+
+#define MESSAGE_LOG_V_COLOR F_WHITE
 
 /* Log level label */
 static const char* p_debug_level_label[] = {
-	LOG_V_COLOR "<" C_BOLD "V" C_DEFAULT LOG_V_COLOR ">\0",
-	LOG_D_COLOR "<" C_BOLD "D" C_DEFAULT LOG_D_COLOR ">\0",
-	LOG_I_COLOR "<" C_BOLD "I" C_DEFAULT LOG_I_COLOR ">\0",
-	LOG_W_COLOR "<" C_BOLD "W" C_DEFAULT LOG_W_COLOR ">\0",
-	LOG_E_COLOR "<" C_BOLD "E" C_DEFAULT LOG_E_COLOR ">\0",
+    LABEL_V_COLOR " <V> \e[0m",
+    LABEL_D_COLOR " <D> \e[0m",
+    LABEL_I_COLOR " <I> \e[0m",
+    LABEL_W_COLOR " <W> \e[0m",
+    LABEL_E_COLOR " <E> \e[0m",
 };
 
 /* TODO refactor */
 static const char* p_message_color[] = {
-	C_DEFAULT LOG_V_COLOR "\0",
-	C_DEFAULT LOG_D_COLOR "\0",
-	C_BOLD LOG_I_COLOR "\0",
-	C_BOLD LOG_W_COLOR "\0",
-	C_BOLD LOG_E_COLOR "\0",
+    C_DEFAULT LOG_V_COLOR "\0",
+    C_DEFAULT LOG_D_COLOR "\0",
+    C_BOLD LOG_I_COLOR "\0",
+    C_BOLD LOG_W_COLOR "\0",
+    C_BOLD LOG_E_COLOR "\0",
+};
+
+static const char* p_debug_label_color[] = {
+    C_DEFAULT,
+    C_BOLD F_BLUE,
+    C_BOLD F_GREEN,
+    C_BOLD F_YELLOW,
+    C_BOLD F_RED
 };
 
 #else
 
 /* Log level label */
 static const char* p_debug_level_label[] = {
-	"<V>\0",
-	"<D>\0",
-	"<I>\0",
-	"<W>\0",
-	"<E>\0",
+    "<V>\0",
+    "<D>\0",
+    "<I>\0",
+    "<W>\0",
+    "<E>\0",
 };
 #endif /* TOOLS_COLOR_ENABLED */
+
 
 
 /* Debug print */
@@ -62,7 +78,7 @@ static const char* p_debug_level_label[] = {
 
 static const char p_print_format[] =
 #ifdef TOOLS_COLOR_ENABLED
-    "%s [%s:%d] %s%s" C_DEFAULT C_ENDLINE;
+    "%s %s[%s:%d]\e[0m %s%s" C_DEFAULT C_ENDLINE;
 #else
     "%s [%s:%d] %s\n";
 #endif
@@ -84,9 +100,10 @@ void tools_debug_print(int lvl, const char* file_name, int line, const char* fmt
     VA_ARG_UNPACK(p_print_str, fmt);
 
 #ifdef TOOLS_COLOR_ENABLED
-	printf(p_print_format, p_debug_level_label[lvl], file_name, line, p_message_color[lvl], p_print_str);
+    printf(p_print_format, p_debug_level_label[lvl], p_debug_label_color[lvl],
+        file_name, line, p_message_color[lvl], p_print_str);
 #else
-	printf(p_print_format, p_debug_level_label[lvl], file_name, line, p_print_str);
+    printf(p_print_format, p_debug_level_label[lvl], file_name, line, p_print_str);
 #endif
     TOOLS_PRINT_UNLOCK();
 }
@@ -98,7 +115,7 @@ void tools_debug_print(int lvl, const char* file_name, int line, const char* fmt
 /* Debug log string format */
 static const char p_log_format[] =
 #ifdef TOOLS_COLOR_ENABLED
-    "%s [%s::%s:%d] %s%s" C_DEFAULT C_ENDLINE;
+    "%s \e[1;35m[%s::%s:%d]\e[0m %s%s" C_DEFAULT C_ENDLINE;
 #else
     "%s [%s::%s:%d] %s\n";
 #endif
@@ -120,9 +137,9 @@ void tools_debug_log(int lvl, const char* tag, const char* func_name, int line, 
     VA_ARG_UNPACK(p_log_str, fmt);
 
 #ifdef TOOLS_COLOR_ENABLED
-	printf(p_log_format, p_debug_level_label[lvl], tag, func_name, line, p_message_color[lvl], p_log_str);
+    printf(p_log_format, p_debug_level_label[lvl], tag, func_name, line, p_message_color[lvl], p_log_str);
 #else
-	printf(p_log_format, p_debug_level_label[lvl], tag, func_name, line, p_log_str);
+    printf(p_log_format, p_debug_level_label[lvl], tag, func_name, line, p_log_str);
 #endif
     TOOLS_PRINT_UNLOCK();
 }
@@ -163,10 +180,10 @@ void tools_trace_print(int lvl, const char* file_name, int line, const char* fmt
     tools_string_trace_time(p_trace_print_time_str, tools_time_now_us(), 16);
 
 #ifdef TOOLS_COLOR_ENABLED
-	printf(p_trace_print_format, p_trace_print_time_str, p_debug_level_label[lvl],
+    printf(p_trace_print_format, p_trace_print_time_str, p_debug_level_label[lvl],
         file_name, line, p_message_color[lvl], p_trace_print_str);
 #else
-	printf(p_trace_print_format, p_trace_print_time_str, p_debug_level_label[lvl],
+    printf(p_trace_print_format, p_trace_print_time_str, p_debug_level_label[lvl],
         file_name, line, p_trace_print_str);
 #endif
     TOOLS_PRINT_UNLOCK();
@@ -206,10 +223,10 @@ void tools_trace_log(int lvl, const char* _tag,
     tools_string_trace_time(p_trace_log_time_str, tools_time_now_us(), 16);
 
 #ifdef TOOLS_COLOR_ENABLED
-	printf(p_trace_log_format, p_trace_log_time_str, p_debug_level_label[lvl],
+    printf(p_trace_log_format, p_trace_log_time_str, p_debug_level_label[lvl],
         _tag, func_name, line, p_message_color[lvl], p_trace_log_str);
 #else
-	printf(p_trace_log_format, p_trace_log_time_str, p_debug_level_label[lvl]
+    printf(p_trace_log_format, p_trace_log_time_str, p_debug_level_label[lvl]
         , _tag, func_name, line, p_trace_log_str);
 #endif
     TOOLS_PRINT_UNLOCK();

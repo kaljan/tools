@@ -1,8 +1,8 @@
 /**
  * @file    tools_buffer.h
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Sep 4, 2020
+ * @date    04.09.2020
  *
  * @brief
  */
@@ -18,20 +18,20 @@
 #endif /* TOOLS_DEBUG_ENABLED */
 
 typedef struct tools_buffer {
-	/** Debug object field*/
-	DEBUG_OBJECT
+    /** Debug object field*/
+    DEBUG_OBJECT
 
-	/** Pointer to data buffer */
-	uint8_t* data;
+    /** Pointer to data buffer */
+    uint8_t* data;
 
-	/** Size of data buffer */
-	size_t size;
+    /** Size of data buffer */
+    size_t size;
 
-	/** Bytes in buffer */
-	size_t bytes;
+    /** Bytes in buffer */
+    size_t bytes;
 
-	/** Next buffer item, for double buffer mode */
-	struct tools_buffer * next;
+    /** Next buffer item, for double buffer mode */
+    struct tools_buffer * next;
 } tools_buffer_t;
 
 #ifdef __cplusplus
@@ -39,7 +39,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 void tools_buffer_init(tools_buffer_t* context, uint8_t* data,
-	size_t size, tools_buffer_t* next, const char* name, const char* parent);
+    size_t size, tools_buffer_t* next, const char* name, const char* parent);
 void tools_buffer_flush(tools_buffer_t* buf);
 size_t tools_buffer_remove(tools_buffer_t* buf, size_t bytes);
 int tools_buffer_write(context_t ctx, const void * data, size_t size);

@@ -1,8 +1,8 @@
 /**
  * @file    tools_time_windows.c
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Nov 07, 2020
+ * @date    07.11.2020
  *
  * @brief
  */
@@ -63,7 +63,7 @@ static uint64_t p_start_time = 0;
  *
  */
 void tools_time_init(void) {
-	p_start_time = p_tools_time_now_us();
+    p_start_time = p_tools_time_now_us();
 }
 
 /**
@@ -72,13 +72,13 @@ void tools_time_init(void) {
  * @return uint64_t
  */
 uint64_t tools_time_now_us(void) {
-	uint64_t ret = p_tools_time_now_us();
-	if (ret && ret > p_start_time) {
-		return ret - p_start_time;
-	} else {
-		ret = 0;
-	}
-	return ret;
+    uint64_t ret = p_tools_time_now_us();
+    if (ret && ret > p_start_time) {
+        return ret - p_start_time;
+    } else {
+        ret = 0;
+    }
+    return ret;
 }
 
 #else

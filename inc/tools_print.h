@@ -1,8 +1,8 @@
 /**
  * @file    tools_print.h
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Dec 27, 2022
+ * @date    27.12.2022
  *
  * @brief
  */
@@ -128,18 +128,18 @@
 #define BB_WHITE      ""
 #endif /* TOOLS_COLOR_ENABLED */
 
-#define C_ENDLINE		"\n"
+#define C_ENDLINE        "\n"
 
 #define TOOLS_PRINT_INFO    0
 #define TOOLS_PRINT_WARNING 1
 #define TOOLS_PRINT_ERROR   2
 
 #define VA_ARG_UNPACK(str, fnm) \
-	va_list vaptr; \
-	va_start(vaptr, fnm); \
-	TOOLS_PRINT_LOCK(); \
-	vsprintf(str, fnm, vaptr); \
-	va_end(vaptr);
+    va_list vaptr; \
+    va_start(vaptr, fnm); \
+    TOOLS_PRINT_LOCK(); \
+    vsprintf(str, fnm, vaptr); \
+    va_end(vaptr);
 
 #ifndef PRINT_MSG_BUFFER_SIZE
 #define PRINT_MSG_BUFFER_SIZE 1024

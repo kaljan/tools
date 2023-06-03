@@ -1,8 +1,8 @@
 /**
  * @file    tools_misc.h
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Dec 27, 2022
+ * @date    27.12.2022
  *
  * @brief
  */
@@ -19,14 +19,14 @@
 
 #define ASSERT_OBJECT(type, arg, name) \
     if (!arg) { \
-        MSG("assertion failed"); \
+        msg_e("assertion failed"); \
         return; \
     } \
     type* name = (type*)arg;
 
 #define ASSERT_OBJECT_RET(type, arg, name, ret) \
     if (!arg) { \
-        MSG("assertion failed"); \
+        msg_e("assertion failed"); \
         return ret; \
     } \
     type* name = (type*)arg;

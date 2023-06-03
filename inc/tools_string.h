@@ -1,8 +1,8 @@
 /**
- * @file 	tools_string.h
- * @author	Mikalai Naurotski (kaljan.nothern@gmail.com)
- * @version	1.0.0
- * @date	Oct 17, 2020
+ * @file    tools_string.h
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
+ * @version 1.0.0
+ * @date    17.10.2020
  *
  * @brief   String tools
  */
@@ -33,6 +33,15 @@ int tools_string_split(char* str, size_t size, char delim,
 int tools_string_loader(const char* fname, int(*callback)(void*, int, char*, size_t), void*);
 
 int tools_color_esc(char* buf, size_t buf_size, const color_rgb_t* c, int flags);
+int tools_append_str(char* buf, size_t size, const char* fmt, ...);
+
+#ifdef TOOLS_ALLOC_ENABLED
+char** tools_split_string(char* buf, size_t size, char delim, size_t* count);
+#endif /* TOOLS_ALLOC_ENABLED */
+
+#ifdef ALLOC_ENABLED
+char* tools_strdup(const char* str);
+#endif /* ALLOC_ENABLED */
 
 #ifdef __cplusplus
 }

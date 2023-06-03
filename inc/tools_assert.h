@@ -1,8 +1,8 @@
 /**
  * @file    tools_assert.h
- * @author  Mikalai Naurotski (kaljan.nothern@gmail.com)
+ * @author  Nikolai Naurotski (kaljan.nothern@gmail.com)
  * @version 1.0.0
- * @date    Dec 27, 2022
+ * @date    27.12.2022
  *
  * @brief
  */
