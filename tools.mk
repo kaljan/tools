@@ -21,7 +21,7 @@ TOOLS_SOURCES = \
 	$(TOOLS_DIR)/src/tools_cliopt.c \
 	$(TOOLS_DIR)/src/tools_crc16.c \
 	$(TOOLS_DIR)/src/tools_crc8.c \
-	$(TOOLS_DIR)/src/tools_datetime.c \
+	$(TOOLS_DIR)/src/tools_dtc.c \
 	$(TOOLS_DIR)/src/tools_debug.c \
 	$(TOOLS_DIR)/src/tools_demux.c \
 	$(TOOLS_DIR)/src/tools_dlist.c \
@@ -35,5 +35,3 @@ TOOLS_SOURCES = \
 	$(TOOLS_DIR)/src/tools_thread.c \
 	$(TOOLS_DIR)/src/tools_time.c \
 	$(TOOLS_DIR)/src/tools_timer.c
-
-
