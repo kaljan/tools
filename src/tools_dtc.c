@@ -199,9 +199,6 @@ int dtc_calc_weekday(int day, int month, int year) {
 /**
  * Convert current datetime to number of seconds since fpoch
  *
- * Сначала переводим текущую дату (по григорианскуму календарю) в юлианский
- * день JDN.
- *
  * Convert gregorian date to JDN
  *
  * Calculate coefficients:
