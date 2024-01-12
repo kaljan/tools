@@ -115,9 +115,9 @@ void tools_debug_print(int lvl, const char* file_name, int line, const char* fmt
 /* Debug log string format */
 static const char p_log_format[] =
 #ifdef TOOLS_COLOR_ENABLED
-    "%s \e[1;35m[%s::%s:%d]\e[0m %s%s" C_DEFAULT C_ENDLINE;
+    "%s %s[%s::%s():%d]\e[0m %s%s" C_DEFAULT C_ENDLINE;
 #else
-    "%s [%s::%s:%d] %s\n";
+    "%s [%s::%s():%d] %s\n";
 #endif
 
 /* Debug log message string buffer */
@@ -137,7 +137,7 @@ void tools_debug_log(int lvl, const char* tag, const char* func_name, int line, 
     VA_ARG_UNPACK(p_log_str, fmt);
 
 #ifdef TOOLS_COLOR_ENABLED
-    printf(p_log_format, p_debug_level_label[lvl], tag, func_name, line, p_message_color[lvl], p_log_str);
+    printf(p_log_format, p_debug_level_label[lvl], p_debug_label_color[lvl], tag, func_name, line, p_message_color[lvl], p_log_str);
 #else
     printf(p_log_format, p_debug_level_label[lvl], tag, func_name, line, p_log_str);
 #endif
