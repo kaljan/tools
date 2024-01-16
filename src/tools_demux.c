@@ -21,7 +21,7 @@
 #endif
 
 void tools_mux_channel_init(mux_channel_t* context, const char* name, const char* parent) {
-    ASSERT_ARG(context)
+    ASSERT_PTR(context)
 #ifdef TOOLS_DEBUG_ENABLED
     create_tag(&context->dbg, "tools_buffer_t", name, parent);
     demux_log_v(_tag, "buffer initialized");
@@ -29,7 +29,7 @@ void tools_mux_channel_init(mux_channel_t* context, const char* name, const char
 }
 
 void tools_demux_init(demux_t* context, const char* name, const char* parent) {
-    ASSERT_ARG(context)
+    ASSERT_PTR(context)
 #ifdef TOOLS_DEBUG_ENABLED
     create_tag(&context->dbg, "tools_buffer_t", name, parent);
     demux_log_v(_tag, "buffer initialized");
@@ -110,7 +110,7 @@ static int p_tools_demux_data(demux_t * demux,
  */
 int tools_demux_data(context_t ctx, const void* data, size_t size) {
     ASSERT_OBJECT_RET(demux_t, context, ctx, STATUS_ERROR)
-    ASSERT_ARG_RET(data, STATUS_ERROR)
+    ASSERT_PTR_RET(data, STATUS_ERROR)
 
     if (size < sizeof(demux_header_t)) {
         demux_log_w(_tag, "Not enough data");

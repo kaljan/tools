@@ -24,7 +24,7 @@
         return; \
     }
 
-#define TOOLS_STRING_ASSERT_ARG_RET(__str, __retval) \
+#define TOOLS_STRING_ASSERT_PTR_RET(__str, __retval) \
     if (!__str || !strlen(__str)) { \
         return __retval; \
     }
@@ -39,10 +39,10 @@ int tools_strhex(char* str, size_t str_size, const uint8_t* data, size_t data_si
     int ret = -1;
     size_t cursor = 0;
 
-    ASSERT_ARG_RET(str, ret)
-    ASSERT_ARG_RET(str_size, ret)
-    ASSERT_ARG_RET(data, ret)
-    ASSERT_ARG_RET(data_size, ret)
+    ASSERT_PTR_RET(str, ret)
+    ASSERT_PTR_RET(str_size, ret)
+    ASSERT_PTR_RET(data, ret)
+    ASSERT_PTR_RET(data_size, ret)
 
     if (!pref) {
         pref = "";
@@ -208,9 +208,9 @@ char** tools_split_string(char* buf, size_t size, char delim, size_t* count) {
 int tools_string_split(char* str, size_t size, char delim,
     int(*clbk)(void*, const char*, size_t), void* arg, int* c_ret) {
     int ret = -1;
-    TOOLS_STRING_ASSERT_ARG_RET(str, ret)
-    ASSERT_ARG_RET(clbk, ret)
-    ASSERT_ARG_RET(delim, ret)
+    TOOLS_STRING_ASSERT_PTR_RET(str, ret)
+    ASSERT_PTR_RET(clbk, ret)
+    ASSERT_PTR_RET(delim, ret)
 
     int cret = 0;
     char* str_end = str + strlen(str);
@@ -268,8 +268,8 @@ int tools_string_split(char* str, size_t size, char delim,
  */
 int tools_string_loader(const char* f_name, int(*callback)(void*, int, char*, size_t), void* arg) {
     int ret = -1;
-    ASSERT_ARG_RET(f_name, ret) else
-    ASSERT_ARG_RET(callback, ret)
+    ASSERT_PTR_RET(f_name, ret) else
+    ASSERT_PTR_RET(callback, ret)
 
     FILE* f_des = fopen(f_name, "r");
     if (f_des) {
@@ -296,7 +296,7 @@ int tools_string_loader(const char* f_name, int(*callback)(void*, int, char*, si
 int tools_color_esc(char* buf, size_t buf_size, const color_rgb_t* c, int flags) {
     int ret = -1;
     ASSERT_STRING_RET(buf, ret)
-    ASSERT_ARG_RET(c, ret)
+    ASSERT_PTR_RET(c, ret)
 
     ret = snprintf(buf, buf_size, "\e[%d;2;%d;%d;%dm"
         , 38 + (flags & TOOLS_IS_BACKGROUND)  ? 10 : 0

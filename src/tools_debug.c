@@ -243,7 +243,7 @@ void tools_trace_log(int lvl, const char* _tag,
  * @param parent_name
  */
 void create_tag(debug_object_t* d_obj, const char* obj_type, const char* obj_name, const char* parent_name) {
-    ASSERT_ARG(d_obj)
+    ASSERT_PTR(d_obj)
 
     print_v("obj_type: %s", obj_type);
     print_v("obj_name: %s", obj_name);

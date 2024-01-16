@@ -16,7 +16,7 @@
 #include <windows.h>
 
 int tools_time_current(struct timeval* tv) {
-    ASSERT_ARG_RET(tv, STATUS_SUCCESS)
+    ASSERT_PTR_RET(tv, STATUS_SUCCESS)
     static FILETIME               filetime; /* 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 00:00 UTC */
     static ULARGE_INTEGER         x;
     static ULONGLONG              usec;
