@@ -46,7 +46,7 @@ void tools_demux_init(demux_t* context, const char* name, const char* parent) {
  * @return int
  */
 int tools_mux_data(context_t ctx, const void* data, size_t size) {
-    ASSERT_OBJECT_RET(mux_channel_t, ctx, context, STATUS_ERROR)
+    ASSERT_OBJECT_RET(mux_channel_t, context, ctx, STATUS_ERROR)
 
     if (size > context->size) {
         demux_log_e(_tag, "large data; max size: %d; size: %d", context->size, size);
@@ -109,7 +109,7 @@ static int p_tools_demux_data(demux_t * demux,
  * number of parsed bytes
  */
 int tools_demux_data(context_t ctx, const void* data, size_t size) {
-    ASSERT_OBJECT_RET(demux_t, ctx, context, STATUS_ERROR)
+    ASSERT_OBJECT_RET(demux_t, context, ctx, STATUS_ERROR)
     ASSERT_ARG_RET(data, STATUS_ERROR)
 
     if (size < sizeof(demux_header_t)) {

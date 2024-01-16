@@ -52,7 +52,7 @@ void tools_thread_delete(tools_thread_t** instance) {
 }
 
 static void* tools_thread_routine(void* ctx) {
-    ASSERT_OBJECT_RET(tools_thread_t, ctx, context, ctx)
+    ASSERT_OBJECT_RET(tools_thread_t, context, ctx, ctx)
     ASSERT_ARG_RET(context->callback, ctx);
 
     pthread_mutex_lock(&context->mutex);
