@@ -19,25 +19,37 @@
 #define IS_NOT_NULL(ptr) (NULL != (ptr))
 
 #define ASSERT_PTR(arg) \
-    if (NULL == arg) { \
+    if (NULL == (arg)) { \
         msg_e("assert error"); \
         return; \
     }
 
 #define ASSERT_PTR_RET(arg, ret) \
-    if (NULL == arg) { \
+    if (NULL == (arg)) { \
+        msg_e("assert error"); \
+        return ret; \
+    }
+
+#define ASSERT_VAL(val) \
+    if (0 == (val)) { \
+        msg_e("assert error"); \
+        return; \
+    }
+
+#define ASSERT_VAL_RET(val, ret) \
+    if (0 == (val)) { \
         msg_e("assert error"); \
         return ret; \
     }
 
 #define ASSERT_STRING(str) \
-    if (!str || !strlen(str)) { \
+    if ((NULL == (str)) || (0 == strlen((str)))) { \
         msg_e("assert error"); \
         return;\
     }
 
 #define ASSERT_STRING_RET(str, ret) \
-    if (!str || !strlen(str)) { \
+    if ((NULL == (str)) || (0 == strlen((str)))) { \
         msg_e("assert error"); \
         return ret; \
     }
