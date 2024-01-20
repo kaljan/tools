@@ -195,7 +195,7 @@ int tools_string_split(char* str, size_t size, char delim,
     int ret = -1;
     ASSERT_STRING_RET(str, ret)
     ASSERT_PTR_RET(clbk, ret)
-    ASSERT_PTR_RET(delim, ret)
+    ASSERT_VAL_RET(delim, ret)
 
     int cret = 0;
     char* str_end = str + strlen(str);

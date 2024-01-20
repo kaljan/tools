@@ -13,6 +13,7 @@
 
 #ifdef TOOLS_THREAD_ENABLED
 #ifdef __linux__
+#include <sys/stat.h>
 #include <pthread.h>
 #endif /* __linux__ */
 #endif /* TOOLS_THREAD_ENABLED */
@@ -159,6 +160,8 @@ void tools_print_unlock(void);
 
 void print_msg(int type, const char* file, int line, const char* fmt, ...);
 void print_errno(const char *file_name, int line, const char* fmt, ...);
+
+void tools_print_stat(struct stat const* const fstat);
 
 #ifdef __cplusplus
 }

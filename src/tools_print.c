@@ -103,5 +103,38 @@ void print_errno(const char *file_name, int line, const char* fmt, ...) {
     TOOLS_PRINT_UNLOCK();
 }
 
+void tools_print_stat(struct stat const* const fstat) {
+    if (!fstat) {
+        return;
+    }
+    printf(
+        "st_dev     : %lu\n"
+        "st_ino     : %lu\n"
+        "st_nlink   : %lu\n"
+        "st_mode    : 0x%X\n"
+        "st_uid     : 0x%X\n"
+        "st_gid     : 0x%X\n"
+                #ifdef __x86_64__
+        "__pad0     : 0x%X\n"
+                #endif /* __x86_64__ */
+        "st_rdev    : %lu\n"
+        "st_size    : %lu\n"
+        "st_blksize : %lu\n"
+        "st_blocks  : %lu\n"
+        , fstat->st_dev
+        , fstat->st_ino
+        , fstat->st_nlink
+        , fstat->st_mode
+        , fstat->st_uid
+        , fstat->st_gid
+                #ifdef __x86_64__
+        , fstat->__pad0
+                #endif /* __x86_64__ */
+        , fstat->st_rdev
+        , fstat->st_size
+        , fstat->st_blksize
+        , fstat->st_blocks
+    );
+}
 
 #endif /* TOOLS_PRINT_ENABLED */
