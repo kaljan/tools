@@ -17,14 +17,14 @@
 
 #define GET_OBJECT(obj_type, obj_name, arg) obj_type* obj_name = (obj_type*)arg;
 
-#define ASSERT_OBJECT(type, arg, name) \
+#define ASSERT_OBJECT(type, name, arg) \
     if (!arg) { \
         msg_e("assertion failed"); \
         return; \
     } \
     type* name = (type*)arg;
 
-#define ASSERT_OBJECT_RET(type, arg, name, ret) \
+#define ASSERT_OBJECT_RET(type, name, arg, ret) \
     if (!arg) { \
         msg_e("assertion failed"); \
         return ret; \

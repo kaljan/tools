@@ -24,7 +24,7 @@
         return; \
     }
 
-#define TIMER_ASSERT_ARG_RET(b, r) \
+#define TIMER_ASSERT_PTR_RET(b, r) \
     if (!b) { \
         timer_print_e("assertion failed"); \
         return r; \
@@ -70,7 +70,7 @@ void tools_timer_reset(tools_timer_t * context) {
 }
 
 bool tools_timer_update(tools_timer_t * context) {
-    TIMER_ASSERT_ARG_RET(context, false)
+    TIMER_ASSERT_PTR_RET(context, false)
     if (context->timeout && context->start_time) {
         if (soft_timer_get_time() - context->start_time > context->timeout) {
             if (context->continous) {

@@ -13,14 +13,19 @@
 #include "tools_opt.h"
 
 #ifdef TOOLS_ASSERT_ENABLED
-#define ASSERT_ARG(arg) \
-    if (!arg) { \
+
+#define IS_NULL(ptr) (NULL == (ptr))
+
+#define IS_NOT_NULL(ptr) (NULL != (ptr))
+
+#define ASSERT_PTR(arg) \
+    if (NULL == arg) { \
         msg_e("assert error"); \
         return; \
     }
 
-#define ASSERT_ARG_RET(arg, ret) \
-    if (!arg) { \
+#define ASSERT_PTR_RET(arg, ret) \
+    if (NULL == arg) { \
         msg_e("assert error"); \
         return ret; \
     }
@@ -37,8 +42,8 @@
         return ret; \
     }
 #else
-#define ASSERT_ARG(arg)
-#define ASSERT_ARG_RET(arg, ret)
+#define ASSERT_PTR(arg)
+#define ASSERT_PTR_RET(arg, ret)
 #define ASSERT_STRING(str)
 #define ASSERT_STRING_RET(str, ret)
 #endif
