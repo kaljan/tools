@@ -28,7 +28,7 @@ static int opt_strcmp(const char* opt1, const char* opt2) {
 }
 
 static int opt_node_set_optarg(opt_node_t* context, char* arg) {
-    ASSERT_ARG_RET(context->callback, -1)
+    ASSERT_PTR_RET(context->callback, -1)
     int ret = 0;
     if (NULL == arg) {
         ret = context->callback(context->object, NULL);
@@ -48,7 +48,7 @@ static int opt_node_set_optarg(opt_node_t* context, char* arg) {
 }
 
 static int opt_node_parse_arg(opt_node_t* context, char** arg) {
-    ASSERT_ARG_RET(context->callback, -1)
+    ASSERT_PTR_RET(context->callback, -1)
 
     print_v("start");
     int ret = 0;
@@ -72,7 +72,7 @@ static int opt_node_parse_arg(opt_node_t* context, char** arg) {
 }
 
 static int opt_node_split_callback(void* ctx, const char* str, size_t size) {
-    ASSERT_OBJECT_RET(opt_node_t, ctx, context, -1)
+    ASSERT_OBJECT_RET(opt_node_t, context, ctx, -1)
     int ret = -1;
     if (NULL != context->callback) {
         ret = context->callback(context->object, str);
@@ -222,8 +222,8 @@ static int opt_container_parse(opt_container_t* context, char* opt, char** argv)
 }
 
 int tools_cliopt_exec(opt_container_t* context, int argc, char** argv) {
-    ASSERT_ARG_RET(context, -1)
-    ASSERT_ARG_RET(argv, -1)
+    ASSERT_PTR_RET(context, -1)
+    ASSERT_PTR_RET(argv, -1)
     int ret = 0;
     print_v("start parsing options");
     if (context->argc_min > 0) {

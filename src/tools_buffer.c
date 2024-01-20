@@ -34,9 +34,9 @@
 
 void tools_buffer_init(tools_buffer_t* context, uint8_t* data,
     size_t size, tools_buffer_t* next, const char* name, const char* parent) {
-    ASSERT_ARG(context)
-    else ASSERT_ARG(data)
-    else ASSERT_ARG(size)
+    ASSERT_PTR(context)
+    else ASSERT_PTR(data)
+    else ASSERT_PTR(size)
 
     context->data = data;
     context->size = size;
@@ -172,7 +172,7 @@ size_t tools_buffer_avail(tools_buffer_t* context) {
  */
 int tools_buffer_download(tools_buffer_t* context, read_fn_t downloader, context_t ctx) {
     BUF_ASSERT_RET(context, TOOLS_FAILED)
-    ASSERT_ARG_RET(downloader, TOOLS_FAILED)
+    ASSERT_PTR_RET(downloader, TOOLS_FAILED)
     if (context->bytes < context->size) {
         buf_log_v(_tag, "download data");
         int ret = downloader(ctx, context->data + context->bytes, context->size - context->bytes);
@@ -199,7 +199,7 @@ int tools_buffer_download(tools_buffer_t* context, read_fn_t downloader, context
  */
 int tools_buffer_upload(tools_buffer_t* context, write_fn_t uploader, context_t ctx) {
     BUF_ASSERT_RET(context, TOOLS_FAILED)
-    ASSERT_ARG_RET(uploader, TOOLS_FAILED)
+    ASSERT_PTR_RET(uploader, TOOLS_FAILED)
     if (context->bytes > context->size) {
         print_w("context->bytes > context->size");
     }
@@ -233,7 +233,7 @@ int tools_buffer_upload(tools_buffer_t* context, write_fn_t uploader, context_t 
  */
 int tools_buffer_iterator(tools_buffer_t* context, write_fn_t clbk, context_t ctx) {
     BUF_ASSERT_RET(context, TOOLS_FAILED)
-    ASSERT_ARG_RET(clbk, TOOLS_FAILED)
+    ASSERT_PTR_RET(clbk, TOOLS_FAILED)
 
     size_t bytes = 0;
     int ret = 0;
