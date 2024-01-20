@@ -15,9 +15,6 @@
 
 #ifdef TOOLS_DEBUG_ENABLED
 #include "debug/dbg_timer.h"
-#else
-#include "common_types.h"
-#include "common_defs.h"
 #endif /* TOOLS_DEBUG_ENABLED */
 
 typedef struct _tools_timer_t {
